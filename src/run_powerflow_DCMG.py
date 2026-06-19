@@ -15,9 +15,9 @@ import pandas as pd
 import opendssdirect as dss
 
 
-BASE_DIR = Path(__file__).resolve().parent
-DSS_FILE = BASE_DIR / "IEEE123Maste_V3_Mod.dss"
-OUTPUT_DIR = BASE_DIR / "powerflow_results_24h_scaled"
+BASE_DIR = Path(__file__).resolve().parent.parent
+DSS_FILE = BASE_DIR / "data" / "IEEE123Maste_V3_Mod.dss"
+OUTPUT_DIR = BASE_DIR / "out" /"powerflow_results_24h_scaled"
 HOURS_PER_DAY = 24
 LOW_VOLTAGE_LIMIT_PU = 0.9
 HIGH_VOLTAGE_LIMIT_PU = 1.1
@@ -46,7 +46,7 @@ def compile_circuit() -> None:
         else:
             fixed_lines.append(line)
 
-    temp_dss = BASE_DIR / "IEEE123Maste_V3_Mod_fixed.dss"
+    temp_dss = BASE_DIR / "data" / "IEEE123Maste_V3_Mod_fixed.dss"
     temp_dss.write_text("\n".join(fixed_lines), encoding="utf-8")
 
     dss.Text.Command(f'compile "{temp_dss.resolve().as_posix()}"')
