@@ -15,9 +15,9 @@ new transformer.DC1_xfmr phases=3 windings=2 buses=[40 401] conns=[wye wye] kvs=
 new transformer.DC2_xfmr phases=3 windings=2 buses=[101 1011] conns=[wye wye] kvs=[4.16 4.16] kvas=[1200 1200] XHL=2 %LoadLoss=0.00001 ppm=0.0
 
 
-new transformer.MG1_xfmr1 phases=3 windings=2 buses=[30 301] conns=[wye wye] kvs=[4.16 4.16] kvas=[1200 1200] XHL=2 %LoadLoss=0.00001 ppm=0.0
-new transformer.MG2_xfmr1 phases=3 windings=2 buses=[93 931] conns=[wye wye] kvs=[4.16 4.16] kvas=[1200 1200] XHL=2 %LoadLoss=0.00001 ppm=0.0
-new transformer.MG2_xfmr2 phases=3 windings=2 buses=[77 771] conns=[wye wye] kvs=[4.16 4.16] kvas=[1200 1200] XHL=2 %LoadLoss=0.00001 ppm=0.0
+new transformer.MG1_xfmr1 phases=3 windings=2 buses=[30 301] conns=[wye wye] kvs=[4.16 4.16] kvas=[300 300] XHL=2 %LoadLoss=0.00001 ppm=0.0
+new transformer.MG2_xfmr1 phases=3 windings=2 buses=[93 931] conns=[wye wye] kvs=[4.16 4.16] kvas=[600 600] XHL=2 %LoadLoss=0.00001 ppm=0.0
+new transformer.MG2_xfmr2 phases=3 windings=2 buses=[77 771] conns=[wye wye] kvs=[4.16 4.16] kvas=[600 600] XHL=2 %LoadLoss=0.00001 ppm=0.0
 
 
 Redirect        IEEELinecodes.DSS
@@ -244,19 +244,33 @@ new relay.RTL3 monitoredObj=line.sw7
 !New Generator.DC2_Gen1 phases=3 bus1=101 kv=4.16 kw=500 kVA=1000 pf=1 model=3
 !New Generator.DC2_Gen2 phases=3 bus1=105 kv=4.16 kw=100 kVA=1000 pf=1 model=3
 
-New Generator.MG1_Gen1 phases=1 bus1=22.2 kv=4.16 conn=wye kw=100 kVA=200 Enabled=Yes
-New Generator.MG1_Gen2 phases=1 bus1=24.3 kv=4.16 conn=wye kw=100 kVA=200  Enabled=Yes
-New Generator.MG1_Gen3 phases=3 bus1=28 kv=4.16 conn=wye kw=100 kVA=500 Enabled=Yes
-New Generator.MG1_Gen4 phases=3 bus1=301 kv=4.16 conn=wye kw=100 kVA=500 Enabled=Yes
+! Moved 1-ph PV to 3-ph bus 
+!New Generator.MG1_Gen1 phases=1 bus1=22.2 kv=4.16 conn=wye kw=100 kVA=200 Enabled=Yes
+!New Generator.MG1_Gen2 phases=1 bus1=24.3 kv=4.16 conn=wye kw=100 kVA=200  Enabled=Yes
+
+New Generator.MG1_Gen1 phases=3 bus1=21 kv=4.16 conn=wye kw=20 kVA=125 Enabled=Yes
+New Generator.MG1_Gen2 phases=3 bus1=23 kv=4.16 conn=wye kw=20 kVA=125  Enabled=Yes
+New Generator.MG1_Gen3 phases=3 bus1=28 kv=4.16 conn=wye kw=100 kVA=200 Enabled=Yes
+New Generator.MG1_Gen4 phases=3 bus1=301 kv=4.16 conn=wye kw=100 kVA=350 Enabled=Yes
+
+! removed 1-ph PV at bus 75 and added added its power to bus 72
+!New Generator.MG2_Gen1 phases=3 bus1=72 kv=4.16 conn=wye kw=100 kVA=200 Enabled=Yes
+!New Generator.MG2_Gen2 phases=1 bus1=75.3 kv=4.16 conn=wye kw=100 kVA=200 Enabled=Yes
+
+New Generator.MG2_Gen1 phases=3 bus1=72 kv=4.16 conn=wye kw=20 kVA=300 Enabled=Yes
+New Generator.MG2_Gen3 phases=3 bus1=76 kv=4.16 conn=wye kw=50 kVA=500 Enabled=Yes
+New Generator.MG2_Gen4 phases=3 bus1=771 kv=4.16 conn=wye kw=50 kVA=750 Enabled=Yes
+New Generator.MG2_Gen5 phases=3 bus1=86 kv=4.16 conn=wye kw=50 kVA=300 Enabled=Yes
+New Generator.MG2_Gen6 phases=3 bus1=931 kv=4.16 conn=wye kw=50 kVA=750 Enabled=Yes
 
 
 
-New Generator.MG2_Gen1 phases=3 bus1=72 kv=4.16 conn=wye kw=100 kVA=200 Enabled=Yes
-New Generator.MG2_Gen2 phases=1 bus1=75.3 kv=4.16 conn=wye kw=100 kVA=200 Enabled=Yes
-New Generator.MG2_Gen3 phases=3 bus1=76 kv=4.16 conn=wye kw=100 kVA=400 Enabled=Yes
-New Generator.MG2_Gen4 phases=3 bus1=771 kv=4.16 conn=wye kw=100 kVA=500 Enabled=Yes
-New Generator.MG2_Gen5 phases=3 bus1=86 kv=4.16 conn=wye kw=100 kVA=200 Enabled=Yes
-New Generator.MG2_Gen6 phases=3 bus1=931 kv=4.16 conn=wye kw=100 kVA=500 Enabled=Yes
+!New Generator.MG2_Gen1 phases=3 bus1=72 kv=4.16 conn=wye kw=20 kVA=300 Enabled=Yes
+!New Generator.MG2_Gen2 phases=1 bus1=75.3 kv=4.16 conn=wye kw=20 kVA=100 Enabled=Yes
+!New Generator.MG2_Gen3 phases=3 bus1=76 kv=4.16 conn=wye kw=50 kVA=500 Enabled=No
+!New Generator.MG2_Gen4 phases=3 bus1=771 kv=4.16 conn=wye kw=50 kVA=750 Enabled=No
+!New Generator.MG2_Gen5 phases=3 bus1=86 kv=4.16 conn=wye kw=20 kVA=300 Enabled=Yes
+!New Generator.MG2_Gen6 phases=3 bus1=931 kv=4.16 conn=wye kw=50 kVA=750 Enabled=No
 ! solve default config
 Edit line.sw2 enabled=false
 solve
