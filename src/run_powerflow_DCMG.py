@@ -1,3 +1,8 @@
+# Copyright (c) 2026, UChicago Argonne, LLC. All Rights Reserved.
+# Software Name: AI4MG-networked-microgrid-models
+# Released under the MIT License. See LICENSE.md in the project root for the
+# full license text and disclaimer of warranty.
+
 """
 24-hour scaled power-flow analysis for IEEE123Maste_V3_Mod.dss.
 
