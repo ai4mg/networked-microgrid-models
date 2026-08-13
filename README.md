@@ -101,3 +101,8 @@ A diagram of the modified feeder is in [doc/](doc/):
 
 - [123_AI4MG.png](doc/123_AI4MG.png) — rendered image
 - [Modified_123_AI4MG.drawio](doc/Modified_123_AI4MG.drawio) — editable source
+
+## License
+
+Released under the MIT License. Copyright © 2026, UChicago Argonne, LLC.
+See [LICENSE.md](LICENSE.md) for the full text.
